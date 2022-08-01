@@ -1,2 +1,14 @@
-//start coding by removing this file and adding yours ;)
-@import "wcs";
+@import "variables.scss";
+@import "~bootstrap/scss/bootstrap";
+
+html {
+     scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+    font-family: $titleFont;
+}
+
+body {
+    font-family: $textFont;
+}
