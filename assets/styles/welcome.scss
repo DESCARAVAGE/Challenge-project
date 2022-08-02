@@ -24,6 +24,13 @@
     box-shadow: 1rem 1rem 1rem rgba(64, 64, 64, 0.5);
 }
 
+.card:hover {
+    mix-blend-mode: difference;
+    filter:saturate(3);
+    transition: 0.5s;
+}
+
 .cb1 {
+    justify-content: center;
     background-color: rgba(64, 64, 64, 0.1);
 }

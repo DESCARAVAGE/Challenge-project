@@ -11,25 +11,53 @@
 
 {% block body %}
 	<section class="bloc">
+	{% if app.user %}
+		<h1 class="text-center text-light">Welcome {{ app.user.name }} !</h1>
+	{% else %}
 		<h1 class="text-center text-light">Welcome challenger !</h1>
-		<h6 class="text-center m-5 text-light">Si tu te trouves ici c'est que tu es à la recherche de challenge pour <strong>le roi des développeur !</strong>
+	{% endif %}
+		<h6 class="text-center m-5 text-light">Si tu te trouves ici c'est que tu es à la recherche de challenge pour
+			<strong>le roi des développeur !</strong>
 			<br>
-			Pour cela ce  site est fait pour toi, les challenges sont classés par <strong>différentes catégories</strong> qui seront amenées à évoluer avec les années.
+			Pour cela ce  site est fait pour toi, les challenges sont classés par
+			<strong>différentes catégories</strong>
+			qui seront amenées à évoluer avec les années.
 			<br>
-			Tu y retrouveras des challenges ordonnés par : <strong>Languages</strong> (PHP, JS, etc...), <strong>Niveaux de difficultés</strong> (basics, facile, etc...), et <strong>Types</strong> (front, back, full-stack).
+			Tu y retrouveras des challenges ordonnés par :
+			<strong>Languages</strong>
+			(PHP, JS, etc...),
+			<strong>Niveaux de difficultés</strong>
+			(basics, facile, etc...), et
+			<strong>Types</strong>
+			(front, back, full-stack).
 		</h6>
-		<div class="row justify-content-center">
-			<div class="card col-lg-3 col-md-4 mx-2 cb1 border border-light">
-				<div class="card-body ">
-					<p class="text-light card-text">Retrouver <strong>tous les challenges</strong> que propose notre site !</p>
-				</div>
+		<div class="row justify-content-center p-5">
+			<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
+				<a href="{{ path('home') }} " class="text-decoration-none">
+					<div class="card-body ">
+						<p class="text-light card-text">Retrouver
+							<strong>tous les challenges</strong>
+							que propose notre site !</p>
+					</div>
+				</a>
 			</div>
-			<div class="card col-lg-3 col-md-4 mx-2 cb1 border border-light">
-				<div class="card-body ">
-					<p class="text-light card-text"><strong>Se connecter / s'inscrire </strong>pour bénéficier de toutes les fonctionnalités de <strong>challenge yourself !!</strong></p>
+			{% if app.user %}
+				{{ app.user.email }}
+				<a href="{{ path('app_logout') }}">
+					Se déconnecter</a>
+			{% else %}
+				<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2 cb1 border border-light">
+					<a href=" {{ path('login') }}" class="text-decoration-none">
+						<div class="card-body ">
+							<p class="text-light card-text">
+								<strong>Se connecter / s'inscrire
+								</strong>pour bénéficier de toutes les fonctionnalités de
+								<strong>challenge yourself !!</strong>
+							</p>
+						</div>
+					</a>
 				</div>
-			</div>
+			{% endif %}
 		</div>
-
 	</section>
 {% endblock %}
