@@ -1,0 +1,36 @@
+@import "variables.scss";
+
+.bloc {
+    height: 100vh;
+    background-image: url(../images/fond-ecran.jpg);
+    background-size: cover;
+    animation-name: back;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes back {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.card {
+    backdrop-filter: blur(1rem);
+    box-shadow: 1rem 1rem 1rem rgba(64, 64, 64, 0.5);
+}
+
+.card:hover {
+    mix-blend-mode: difference;
+    filter:saturate(3);
+    transition: 0.5s;
+}
+
+.cb1 {
+    justify-content: center;
+    background-color: rgba(64, 64, 64, 0.1);
+}
