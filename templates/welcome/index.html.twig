@@ -12,7 +12,7 @@
 {% block body %}
 	<section class="bloc">
 	{% if app.user %}
-		<h1 class="text-center text-light">Welcome {{ app.user.name }} !</h1>
+		<h1 class="text-center text-light">Welcome {{ app.user.username }} !</h1>
 	{% else %}
 		<h1 class="text-center text-light">Welcome challenger !</h1>
 	{% endif %}
@@ -42,9 +42,22 @@
 				</a>
 			</div>
 			{% if app.user %}
-				{{ app.user.email }}
-				<a href="{{ path('app_logout') }}">
-					Se déconnecter</a>
+			<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
+				<a href="#{# {{ path('account') }} #}" class="text-decoration-none">
+					<div class="card-body ">
+						<p class="text-light card-text text-center">
+							<strong>Mon compte</strong></p>
+					</div>
+				</a>
+			</div>
+			<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
+				<a href="#{# {{ path('account_new') }} #}" class="text-decoration-none">
+					<div class="card-body ">
+						<p class="text-light card-text text-center">
+							<strong><i class="bi bi-cloud-plus fs-2"></i></strong></p>
+					</div>
+				</a>
+			</div>
 			{% else %}
 				<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2 cb1 border border-light">
 					<a href=" {{ path('login') }}" class="text-decoration-none">
