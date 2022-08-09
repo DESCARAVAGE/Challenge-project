@@ -19,6 +19,30 @@
     }
 }
 
+.types {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.type {
+    margin: 1rem;
+    padding: 0.5rem;
+    color: $light-primary;
+    border:2px solid $light-primary;
+    border-radius: 50px;
+    background: none;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.type:hover {
+    color: $secondary;
+    border: 2px solid $secondary;
+    filter:saturate(10);
+    
+}
+
 .card {
     justify-content: center;
     backdrop-filter: blur(1rem);

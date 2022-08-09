@@ -15,6 +15,11 @@
 			<h1 class="text-center text-light">Welcome
 				{{ app.user.username }}
 				!</h1>
+			<div class="types">
+				{% for type in types %}
+					<p class="type"> {{type.name}} </p>
+				{% endfor %}
+			</div>
 			<h6 class="text-center m-5 text-light">Bon retour parmis nous
 				<strong>{{ app.user.username }}</strong>
 				! Maintenant que tu es connecté tu peux avoir accès à
@@ -27,12 +32,17 @@
 				Tu auras aussi la possibilité d'en
 				<strong>créer de nouveau</strong>
 				afin de booster la communauté vers le haut ou aider les débutants
-								dans les languages disponibles sur le site (PHP, JS, etc...).
+																				dans les languages disponibles sur le site (PHP, JS, etc...).
 				<br>
 				Différentes fonctionnalités arriveront au fure et à mesure du temps donc mets challenge yourself en favori de ton navigateur.
 			</h6>
 		{% else %}
 			<h1 class="text-center text-light">Welcome challenger !</h1>
+			<div class="types">
+				{% for type in types %}
+					<p class="type"> {{type.name}} </p>
+				{% endfor %}
+			</div>
 			<h6 class="text-center m-5 text-light">Si tu te trouves ici c'est que tu es à la recherche de challenge pour
 				<strong>le roi des développeur !</strong>
 				<br>
