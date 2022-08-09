@@ -11,26 +11,44 @@
 
 {% block body %}
 	<section class="bloc">
-	{% if app.user %}
-		<h1 class="text-center text-light">Welcome {{ app.user.username }} !</h1>
-	{% else %}
-		<h1 class="text-center text-light">Welcome challenger !</h1>
-	{% endif %}
-		<h6 class="text-center m-5 text-light">Si tu te trouves ici c'est que tu es à la recherche de challenge pour
-			<strong>le roi des développeur !</strong>
-			<br>
-			Pour cela ce  site est fait pour toi, les challenges sont classés par
-			<strong>différentes catégories</strong>
-			qui seront amenées à évoluer avec les années.
-			<br>
-			Tu y retrouveras des challenges ordonnés par :
-			<strong>Languages</strong>
-			(PHP, JS, etc...),
-			<strong>Niveaux de difficultés</strong>
-			(basics, facile, etc...), et
-			<strong>Types</strong>
-			(front, back, full-stack).
-		</h6>
+		{% if app.user %}
+			<h1 class="text-center text-light">Welcome
+				{{ app.user.username }}
+				!</h1>
+			<h6 class="text-center m-5 text-light">Bon retour parmis nous
+				<strong>{{ app.user.username }}</strong>
+				! Maintenant que tu es connecté tu peux avoir accès à
+				<strong>toutes les fonctionnalités</strong>
+				que proposer challenge yourself !!
+				<br>
+				Tu pourras retrouver les challenges que tu as acceptés sur
+				<strong>ton compte</strong>.
+				<br>
+				Tu auras aussi la possibilité d'en
+				<strong>créer de nouveau</strong>
+				afin de booster la communauté vers le haut ou aider les débutants
+								dans les languages disponibles sur le site (PHP, JS, etc...).
+				<br>
+				Différentes fonctionnalités arriveront au fure et à mesure du temps donc mets challenge yourself en favori de ton navigateur.
+			</h6>
+		{% else %}
+			<h1 class="text-center text-light">Welcome challenger !</h1>
+			<h6 class="text-center m-5 text-light">Si tu te trouves ici c'est que tu es à la recherche de challenge pour
+				<strong>le roi des développeur !</strong>
+				<br>
+				Pour cela ce  site est fait pour toi, les challenges sont classés par
+				<strong>différentes catégories</strong>
+				qui seront amenées à évoluer avec les années.
+				<br>
+				Tu y retrouveras des challenges ordonnés par :
+				<strong>Languages</strong>
+				(PHP, JS, etc...),
+				<strong>Niveaux de difficultés</strong>
+				(basics, facile, etc...), et
+				<strong>Types</strong>
+				(front, back, full-stack).
+			</h6>
+		{% endif %}
 		<div class="row justify-content-center p-5">
 			<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
 				<a href="{{ path('home') }} " class="text-decoration-none">
@@ -42,22 +60,39 @@
 				</a>
 			</div>
 			{% if app.user %}
-			<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
-				<a href="#{# {{ path('account') }} #}" class="text-decoration-none">
-					<div class="card-body ">
-						<p class="text-light card-text text-center">
-							<strong>Mon compte</strong></p>
-					</div>
-				</a>
-			</div>
-			<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
-				<a href="#{# {{ path('account_new') }} #}" class="text-decoration-none">
-					<div class="card-body ">
-						<p class="text-light card-text text-center">
-							<strong><i class="bi bi-cloud-plus fs-2"></i></strong></p>
-					</div>
-				</a>
-			</div>
+				<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
+					<a href="#{# {{ path('account') }} #}" class="text-decoration-none">
+						<div class="card-body ">
+							<p class="text-light card-text text-center">
+								<strong>Mon compte</strong>
+							</p>
+						</div>
+					</a>
+				</div>
+				<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
+					<a href="#{# {{ path('account_new') }} #}" class="text-decoration-none">
+						<div class="card-body ">
+							<p class="text-light card-text text-center">
+								<strong>
+									<i class="bi bi-cloud-plus fs-2"></i>
+								</strong>
+							</p>
+						</div>
+					</a>
+				</div>
+				<div class="card col-lg-2 col-md-2 col-sm-12 mx-2 my-2 w-10 border border-light">
+					<a class="text-light text-decoration-none" href="{{ path('app_logout') }}">
+						<div class="card-body d-flex justify-content-center align-items-center">
+							<p class="text-dark card-text text-center">
+								<strong>
+									Déconnexion
+									<i class="bi bi-x-circle-fill"></i>
+								</strong>
+							</p>
+						</div>
+					</a>
+				</div>
+
 			{% else %}
 				<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2 cb1 border border-light">
 					<a href=" {{ path('login') }}" class="text-decoration-none">
