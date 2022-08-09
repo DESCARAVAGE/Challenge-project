@@ -1,0 +1,24 @@
+@import "variables.scss";
+
+.bloc {
+    height: 100vh;
+    background-image: url(../images/fond-ecran.jpg);
+    background-size: cover;
+    animation-name: back;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes back {
+    0% {
+        filter: hue-rotate(360deg);
+    }
+    100% {
+        filter: hue-rotate(0deg);
+    }
+}
+
+.arrow {
+    width: fit-content;
+}
