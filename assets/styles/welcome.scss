@@ -43,6 +43,14 @@
     
 }
 
+.color {
+    display: inline-block;
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 1px solid $light;
+}
+
 .card {
     justify-content: center;
     backdrop-filter: blur(1rem);

@@ -17,7 +17,9 @@
 				!</h1>
 			<div class="types">
 				{% for type in types %}
-					<p class="type"> {{type.name}} </p>
+					<p class="type">
+						{{type.name}}
+					</p>
 				{% endfor %}
 			</div>
 			<h6 class="text-center m-5 text-light">Bon retour parmis nous
@@ -32,15 +34,27 @@
 				Tu auras aussi la possibilité d'en
 				<strong>créer de nouveau</strong>
 				afin de booster la communauté vers le haut ou aider les débutants
-																				dans les languages disponibles sur le site (PHP, JS, etc...).
+																																								dans les languages disponibles sur le site (PHP, JS, etc...).
 				<br>
 				Différentes fonctionnalités arriveront au fure et à mesure du temps donc mets challenge yourself en favori de ton navigateur.
 			</h6>
+			<div class="types">
+				{% for language in languages %}
+					<p class="type">{{language.name}}</p>
+				{% endfor %}
+			</div>
+			<div class="types decoration-none">
+				{% for level in levels %}
+					<p class="type"{{level.name}} <span class="color" style="background-color: {{level.color}}"</span></p>
+				{% endfor %}
+			</div>
 		{% else %}
 			<h1 class="text-center text-light">Welcome challenger !</h1>
 			<div class="types">
 				{% for type in types %}
-					<p class="type"> {{type.name}} </p>
+					<p class="type">
+						{{type.name}}
+					</p>
 				{% endfor %}
 			</div>
 			<h6 class="text-center m-5 text-light">Si tu te trouves ici c'est que tu es à la recherche de challenge pour
@@ -58,6 +72,11 @@
 				<strong>Types</strong>
 				(front, back, full-stack).
 			</h6>
+			<div class="types">
+				{% for language in languages %}
+					<p class="type">{{language.name}}</p>
+				{% endfor %}
+			</div>
 		{% endif %}
 		<div class="row justify-content-center p-5">
 			<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
