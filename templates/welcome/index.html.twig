@@ -77,6 +77,11 @@
 					<p class="type">{{language.name}}</p>
 				{% endfor %}
 			</div>
+			<div class="types decoration-none">
+				{% for level in levels %}
+					<p class="type"{{level.name}} <span class="color" style="background-color: {{level.color}}"</span></p>
+				{% endfor %}
+			</div>
 		{% endif %}
 		<div class="row justify-content-center p-5">
 			<div class="card col-lg-3 col-md-4 col-sm-12 mx-2 my-2  cb1 border border-light">
