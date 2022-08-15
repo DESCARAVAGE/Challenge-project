@@ -28,29 +28,16 @@ class Language
     )]
     private string $name;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private string $image;
+
     #[ORM\ManyToMany(targetEntity: Challenge::class, mappedBy: 'languages')]
     private Collection $challenges;
+
 
     public function __construct()
     {
         $this->challenges = new ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**
@@ -76,6 +63,35 @@ class Language
         if ($this->challenges->removeElement($challenge)) {
             $challenge->removeLanguage($this);
         }
+
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
