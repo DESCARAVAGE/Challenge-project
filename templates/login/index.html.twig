@@ -40,7 +40,7 @@
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 					<div class="d-flex justify-content-center align-items-center mt-4">
 						<button type="submit" class="btn btn-primary bg-secondary border-1 border-light p-3 m-2 me-2">login</button>
-						<a href="{# {{ path('registre') }} #}" class="btn border-1 border-light p-3 ms-2 text-light">Sign in</a>
+						<a href=" {{ path('register') }}" class="btn border-1 border-light p-3 ms-2 text-light">Sign in</a>
 					</div>
 				</div>
 			</form>

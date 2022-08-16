@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('register') }}
+{% endblock %}
+
+{% block title %}
+	{{ parent() }}
+	| Register
+{% endblock %}
+
+{% block body %}
+	<main class="bloc d-flex align-items-center justify-content-center">
+		<section class="container">
+			<div class="d-flex justify-content-between">
+				<a class="arrow ms-5 text-decoration-none text-secondary" href="{{ path('welcome') }}">
+					<i class="bi bi-arrow-left fs-1"></i>
+				</a>
+				<a class="homeLogin ps-1 text-decoration-none text-secondary" href="{{ path('home') }}">
+					<i class="bi bi-house-door-fill fs-2 d-flex justify-content-center"></i>
+					<p class="">
+						<strong>Challenges</strong>
+					</p>
+				</a>
+			</div>
+			<h1 class="text-center text-light mb-5">Inscription!!</h1>
+			<div ="d-flex">
+				{{ form_start(registrationForm) }}
+				{{ form_row(registrationForm.username) }}
+				{{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+				{{ form_row(registrationForm.agreeTerms) }}
+			</div>
+			<div class="d-flex justify-content-center align-items-center mt-4">
+				<button type="submit" class="btn btn-primary bg-secondary border-1 border-light p-3 m-2 me-2">Register</button>
+				<a href=" {{ path('login') }}" class="btn border-1 border-light p-3 ms-2 text-light">Login</a>
+			</div>
+			{{ form_end(registrationForm) }}
+		</section>
+	</main>
+{% endblock %}

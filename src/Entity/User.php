@@ -4,11 +4,14 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
+#[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -16,13 +19,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 80)]
+    #[Assert\NotBlank(
+        message: 'Ce champ ne peut pas être vide',
+        groups: ['add', 'default'],
+    )]
+    #[Assert\Length(
+        max: 80,
+        maxMessage: 'Le titre ne doit pas dépasser {{ limit }} caractères',
+        groups: ['add', 'default'],
+    )]
     private string $username;
 
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 80)]
+    #[Assert\NotBlank(
+        message: 'Ce champ ne peut pas être vide',
+        groups: ['add', 'default'],
+    )]
+    #[Assert\Length(
+        max: 80,
+        maxMessage: 'Le titre ne doit pas dépasser {{ limit }} caractères',
+        groups: ['add', 'default'],
+    )]
     private string $password;
 
     public function getId(): ?int
