@@ -14,10 +14,16 @@
 		{% if error %}
 			<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
-		<section class="container-fluid">
-			<a class="arrow ms-5 d-flex gap-3 text-decoration-none text-secondary" href="{{ path('welcome') }}">
-				<i class="bi bi-arrow-left fs-1"></i>
-			</a>
+		<section class="container">
+			<div class="d-flex justify-content-between">
+				<a class="arrow ms-5 text-decoration-none text-secondary" href="{{ path('welcome') }}">
+					<i class="bi bi-arrow-left fs-1"></i>
+				</a>
+				<a class="homeLogin ps-1 text-decoration-none text-secondary" href="{{ path('home') }}">
+					<i class="bi bi-house-door-fill fs-2 d-flex justify-content-center"></i>
+					<p class=""><strong>Challeges</strong></p>
+				</a>
+			</div>
 			<header>
 				<h1 class="text-center text-light mb-5">Come !</h1>
 			</header>
