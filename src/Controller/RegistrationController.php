@@ -31,11 +31,11 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $this->addFlash('success', 'Inscription terminée !! Vous pouvez vous connecter maintenant.');
 
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-            $this->addFlash('success', 'The registration is successfull');
 
             return $this->redirectToRoute('welcome');
         }
