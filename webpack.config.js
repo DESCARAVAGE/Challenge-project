@@ -35,6 +35,7 @@ Encore
     .addStyleEntry('navbar', './assets/styles/navbar.scss')
     .addStyleEntry('welcome', './assets/styles/welcome.scss')
     .addStyleEntry('login', './assets/styles/login.scss')
+    .addStyleEntry('register', './assets/styles/register.scss')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
