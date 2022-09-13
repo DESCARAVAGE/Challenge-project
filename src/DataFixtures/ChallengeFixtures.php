@@ -21,9 +21,11 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
             $challenge = new Challenge();
 
             $challenge->setName($faker->name());
-            $challenge->setDate($faker->dateTime());
-            $typeName = array_rand(TypeFixtures::TYPES);
+            $typeName = TypeFixtures::TYPES[array_rand(TypeFixtures::TYPES)];
             $challenge->setType($this->getReference('type_' . $typeName));
+            $challenge->setDate($faker->dateTime());
+            $levelName = array_rand(LevelFixtures::LEVELS);
+            $challenge->setLevel($this->getReference('level_' . $levelName));
             $manager->persist($challenge);
         }
         $manager->flush();
@@ -33,6 +35,7 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             TypeFixtures::class,
+            LevelFixtures::class,
         ];
     }
 }
