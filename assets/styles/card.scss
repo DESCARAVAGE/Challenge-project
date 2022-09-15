@@ -1,0 +1,41 @@
+@import "variables.scss";
+
+div.card {
+    display: inline-block;
+}
+.card {
+    width: 25rem;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: $light-primary;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card:hover .card-image img {
+    filter: grayscale(0);
+}
+
+.card-image img {
+    width: fit-content;
+    filter: grayscale(1);
+    transition-duration: 0.5s;
+}
+
+.card-body {
+    text-align: center;
+    padding: 1rem;
+}
+.card-level {
+    align-items: center;
+}
+.card-level-color {
+    display: inline-block;
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 1px solid $dark;
+}
+

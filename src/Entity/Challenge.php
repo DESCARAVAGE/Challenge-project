@@ -43,6 +43,18 @@ class Challenge
     #[ORM\ManyToOne(targetEntity: Level::class, inversedBy: 'challenges')]
     private Level $level;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank(
+        message: 'Ce champ ne peut pas être vide',
+        groups: ['add', 'default'],
+    )]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le nom ne doit pas dépasser {{ limit }} caractères',
+        groups: ['add', 'default'],
+    )]
+    private string $catchPhrase;
+
     public function __construct()
     {
         $this->languages = new ArrayCollection();
@@ -122,6 +134,18 @@ class Challenge
     public function setLevel(?Level $level): self
     {
         $this->level = $level;
+
+        return $this;
+    }
+
+    public function getCatchPhrase(): ?string
+    {
+        return $this->catchPhrase;
+    }
+
+    public function setCatchPhrase(?string $catchPhrase): self
+    {
+        $this->catchPhrase = $catchPhrase;
 
         return $this;
     }

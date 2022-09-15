@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Challenge;
-use App\Entity\Type;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
@@ -26,6 +25,7 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
             $challenge->setDate($faker->dateTime());
             $levelName = array_rand(LevelFixtures::LEVELS);
             $challenge->setLevel($this->getReference('level_' . $levelName));
+            $challenge->setCatchPhrase($faker->sentences(3, true));
             $manager->persist($challenge);
         }
         $manager->flush();
