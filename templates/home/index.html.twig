@@ -10,7 +10,7 @@
 		{% include 'components/_navbar.html.twig' %}
 	{% endblock %}
 	{% block search %}{% endblock %}
-	<main class="container-fluid justify-content-centre">
+	<main class="container-fluid d-flex flex-wrap justify-content-center">
 		{% block cards %}
 			{% if challenges is not empty %}
 				{% for challenge in challenges %}
