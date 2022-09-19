@@ -1,0 +1,26 @@
+{% block stylesheets %}
+	{{ encore_entry_link_tags('card') }}
+{% endblock %}
+
+<div class="card">
+	<a href="">
+		<div class="card-image">
+			<div class="card-level-type">
+				<span class="card-level-color" style="background-color: {{challenge.level.color}}">{# {{ challenge.level.name }} #}</span>
+				<p class="card-type ">{{ challenge.type.name }}</p>
+			</div>
+			<img src="assets/images/Languages_Logo/Logo_Angular.jpg" alt="">
+		</div>
+		<div class="card-body">
+			<div class="card-date">
+				<time>{{challenge.date| date("d/m/Y")}}</time>
+			</div>
+			<div class="card-title">
+				<h3>{{ challenge.name }}</h3>
+			</div>
+			<div class="card-catchPhrase">
+				<p>{# {{ challenge.catchPhrase }} #}Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam labore id nostrum ipsa sit inventore dignissimos, pariatur culpa nobis harum velit at a laboriosam, voluptatibus odit eius temporibus libero consequatur.</p>
+			</div>
+		</p>
+	</div>
+</a></div>

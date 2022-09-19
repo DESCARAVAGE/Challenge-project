@@ -125,6 +125,9 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.7"
     },
+    "fzaninotto/faker": {
+        "version": "v1.5.0"
+    },
     "gitonomy/gitlib": {
         "version": "v1.3.4"
     },

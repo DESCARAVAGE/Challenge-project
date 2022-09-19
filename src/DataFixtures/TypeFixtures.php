@@ -9,22 +9,17 @@ use Doctrine\Persistence\ObjectManager;
 class TypeFixtures extends Fixture
 {
     public const TYPES = [
-        [
-            'name' => 'Front',
-        ],
-        [
-            'name' => 'Back',
-        ],
-        [
-            'name' => 'Full stack',
-        ],
-    ];
+            "Front",
+            "Back",
+            "Full stack"
+        ];
 
     public function load(ObjectManager $manager): void
     {
         foreach (self::TYPES as $typeItems) {
             $type = new Type();
-            $type->setName($typeItems['name']);
+            $type->setName($typeItems);
+            $this->addReference('type_' . $typeItems, $type);
             $manager->persist($type);
         }
         $manager->flush();

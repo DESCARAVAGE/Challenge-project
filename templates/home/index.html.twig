@@ -9,5 +9,18 @@
 	{% block header %}
 		{% include 'components/_navbar.html.twig' %}
 	{% endblock %}
+	{% block search %}{% endblock %}
+	<main class="container-fluid d-flex flex-wrap justify-content-center">
+		{% block cards %}
+			{% if challenges is not empty %}
+				{% for challenge in challenges %}
+					{% include "components/_card.html.twig" %}
+				{% endfor %}
+			{% else %}
+				<h2>Aucun challenges à faire ...
+				</h2>
+			{% endif %}
+		{% endblock %}
+	</main>
 
 {% endblock %}
