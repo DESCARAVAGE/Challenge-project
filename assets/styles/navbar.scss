@@ -6,9 +6,17 @@ nav {
     justify-content: space-around;
 }
 
+.navbar-toggler {
+    background-color: $light;
+}
+
+.collapse {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .dropdown-menu {
  --bs-dropdown-bg: none;
  --bs-dropdown-border-color: none;
- text-align: center;
  transition-delay: 3s;
 }
