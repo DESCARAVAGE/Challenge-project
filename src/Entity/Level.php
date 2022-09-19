@@ -34,8 +34,10 @@ class Level
         groups: ['add', 'default'],
     )]
     #[Assert\Length(
+        min:7,
         max: 7,
-        maxMessage: 'Le nom ne doit pas dépasser {{ limit }} caractères',
+        exactMessage: 'La couleur doit faire {{ limit }} caractères,ajouter le "#" au debut de la valeur 
+        en hexadécimal',
         groups: ['add', 'default'],
     )]
     private string $color;
