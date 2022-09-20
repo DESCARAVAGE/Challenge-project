@@ -1,0 +1,11 @@
+{{ form_start(form, {attr: {class: 'filter'}}) }}
+
+    {{ form_row(form.q) }} 
+    <h4 class='text-center'>Type de challenge</h4>
+    {{ form_row(form.types) }}
+    <h4 class="text-center">Niveau de challenge</h4>
+    {{form_row(form.levels)}}
+
+    <button type='submit' class='btn btn-primary w-100'>Filtrer</button>
+
+{{ form_end(form) }}
