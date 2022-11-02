@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Challenge;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -39,28 +40,64 @@ class ChallengeRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Challenge[] Returns an array of Challenge objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /* this methode  allow us to search challenges*/
+    public function findSearch(SearchData $search): array
+    {
+        $query = $this
+            ->createQueryBuilder('challenge')
+            ->select('challenge', 'type')
+            ->join('challenge.type', 'type')
+            ->select('challenge', 'level')
+            ->join('challenge.level', 'level')
+            ->select('challenge', 'languages')
+            ->join('challenge.languages', 'languages');
 
-//    public function findOneBySomeField($value): ?Challenge
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        if (!empty($search->sendSearch)) {
+            $query = $query
+                ->andWhere('challenge.name LIKE :sendSearch')
+                ->setParameter('sendSearch', "%{$search->sendSearch}%");
+        }
+
+        if (!empty($search->types)) {
+            $query = $query
+                ->andWhere('type.id IN (:types)')
+                ->setParameter('types', $search->types);
+        }
+
+        if (!empty($search->levels)) {
+            $query = $query
+                ->andWhere('level.id IN (:levels)')
+                ->setParameter('levels', $search->levels);
+        }
+
+        if (!empty($search->languages)) {
+            $query = $query
+                ->andWhere('languages.id IN (:languages)')
+                ->setParameter('languages', $search->languages);
+        }
+
+        return $query->getQuery()->getResult();
+    }
+    //
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('c')
+    //            ->andWhere('c.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('c.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Challenge
+    //    {
+    //        return $this->createQueryBuilder('c')
+    //            ->andWhere('c.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

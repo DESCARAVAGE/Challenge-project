@@ -30,6 +30,9 @@ class Challenge
     )]
     private string $name;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $image = null;
+
     #[ORM\ManyToOne(targetEntity: Type::class, inversedBy: 'challenges')]
     #[ORM\JoinColumn(nullable: false)]
     private Type $type;
@@ -146,6 +149,18 @@ class Challenge
     public function setCatchPhrase(?string $catchPhrase): self
     {
         $this->catchPhrase = $catchPhrase;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

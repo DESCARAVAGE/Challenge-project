@@ -34,7 +34,7 @@ class Level
         groups: ['add', 'default'],
     )]
     #[Assert\Length(
-        min:7,
+        min: 7,
         max: 7,
         exactMessage: 'La couleur doit faire {{ limit }} caractères,ajouter le "#" au debut de la valeur 
         en hexadécimal',
@@ -107,5 +107,10 @@ class Level
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }
