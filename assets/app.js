@@ -9,6 +9,11 @@
 import './styles/app.scss';
 
 require('bootstrap');
-import('bootstrap-icons/font/bootstrap-icons.css')
+import('bootstrap-icons/font/bootstrap-icons.css');
 // start the Stimulus application
+
+import Filter from './filter.js';
+
+new Filter(document.querySelector('.js-filter'));
+
 import './bootstrap';

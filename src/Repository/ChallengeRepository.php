@@ -44,21 +44,41 @@ class ChallengeRepository extends ServiceEntityRepository
     public function findSearch(SearchData $search): array
     {
         $query = $this
-            ->createQueryBuilder('c');
-        /*  ->select('p', 't')
-            ->join('c.types', 't'); */
+            ->createQueryBuilder('challenge')
+            ->select('challenge', 'type')
+            ->join('challenge.type', 'type')
+            ->select('challenge', 'level')
+            ->join('challenge.level', 'level')
+            ->select('challenge', 'languages')
+            ->join('challenge.languages', 'languages');
 
         if (!empty($search->sendSearch)) {
             $query = $query
-                ->andWhere('c.name LIKE :q')
+                ->andWhere('challenge.name LIKE :sendSearch')
                 ->setParameter('sendSearch', "%{$search->sendSearch}%");
         }
+
+        if (!empty($search->types)) {
+            $query = $query
+                ->andWhere('type.id IN (:types)')
+                ->setParameter('types', $search->types);
+        }
+
+        if (!empty($search->levels)) {
+            $query = $query
+                ->andWhere('level.id IN (:levels)')
+                ->setParameter('levels', $search->levels);
+        }
+
+        if (!empty($search->languages)) {
+            $query = $query
+                ->andWhere('languages.id IN (:languages)')
+                ->setParameter('languages', $search->languages);
+        }
+
         return $query->getQuery()->getResult();
     }
-
-    //    /**
-    //     * @return Challenge[] Returns an array of Challenge objects
-    //     */
+    //
     //    public function findByExampleField($value): array
     //    {
     //        return $this->createQueryBuilder('c')

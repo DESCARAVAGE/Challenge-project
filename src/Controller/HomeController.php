@@ -18,11 +18,9 @@ class HomeController extends AbstractController
         $data = new SearchData();
         $form = $this->createForm(SearchFormType::class, $data);
         $form->handleRequest($request);
-        $challengesSearch = $challengeRepository->findSearch($data);
-        $challenges = $challengeRepository->findAll();
+        $challenges = $challengeRepository->findSearch($data);
         return $this->render('home/index.html.twig', [
             'challenges' => $challenges,
-            'challengesSearch' => $challengesSearch,
             'form' => $form->createView(),
         ]);
     }

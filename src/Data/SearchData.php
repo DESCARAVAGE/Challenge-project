@@ -4,6 +4,7 @@ namespace App\Data;
 
 use App\Entity\Level;
 use App\Entity\Type;
+use App\Entity\Language;
 
 class SearchData
 {
@@ -21,4 +22,9 @@ class SearchData
      * @var Level[]
      */
     public $levels = [];
+
+    /**
+     * @var Language[]
+     */
+    public $languages = [];
 }

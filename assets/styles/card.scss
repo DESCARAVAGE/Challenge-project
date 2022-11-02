@@ -5,7 +5,7 @@ div.card {
 }
 .card {
     width: 25rem;
-    padding: 1rem;
+    height: fit-content;
     margin: 1rem;
     background-color: $light-primary;
 }
@@ -19,7 +19,9 @@ div.card {
 }
 
 .card-image img {
-    width: fit-content;
+
+    height: 25vh;
+    width: 100%;
     filter: grayscale(1);
     transition-duration: 0.5s;
 }
@@ -39,6 +41,41 @@ div.card {
     margin-bottom: 0;
 }
 
+#tooltip {
+    position: relative;
+    cursor: pointer;
+}
+
+#tooltipText {
+    position: absolute;
+    left: 25%;
+    top: 0;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 7px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#tooltipText::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -25%;
+    transform: rotate(180deg);
+    border: 5px solid;
+    border-color: #000 #0000 #0000 #0000;
+}
+
+#tooltip:hover #tooltipText {
+    top: 85%;
+    visibility: visible;
+    opacity: 1;
+}
+
 .card-level-color {
     display: inline-block;
     width: fit-content;
@@ -46,6 +83,8 @@ div.card {
     border-radius: 50%;
     border: 1.5px solid $light;
     padding: 0.5rem;
+    rotate: 180°;
+    
 }
 
 .card-body {

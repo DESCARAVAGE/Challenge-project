@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Data\SearchData;
+use App\Entity\Language;
 use App\Entity\Type;
 use App\Entity\Level;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -36,6 +37,14 @@ class SearchFormType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'class' => Level::class,
+                'expanded' => true,
+                'multiple' =>  true,
+            ])
+
+            ->add('languages', EntityType::class, [
+                'label' => false,
+                'required' => false,
+                'class' => Language::class,
                 'expanded' => true,
                 'multiple' =>  true,
             ]);
