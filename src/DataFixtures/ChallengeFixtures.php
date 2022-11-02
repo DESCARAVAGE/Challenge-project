@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Challenge;
+use App\Service\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
@@ -23,6 +24,12 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
         './build/images/challenge_image/info8.67e04780.jpeg',
     ];
 
+    private Slugify $slugify;
+    public function __construct(Slugify $slugify)
+    {
+        $this->slugify = $slugify;
+    }
+
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
@@ -40,6 +47,7 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
             $languageName = array_rand(LanguageFixtures::LANGUAGES);
             $challenge->addLanguage($this->getReference('languages_' . $languageName));
             $challenge->setCatchPhrase($faker->sentences(3, true));
+            $challenge->setSlug($this->slugify->generate($challenge->getName()));
             $manager->persist($challenge);
         }
         $manager->flush();

@@ -58,6 +58,12 @@ class Challenge
     )]
     private string $catchPhrase;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Length(
+        max: 255,
+    )]
+    private ?string $slug;
+
     public function __construct()
     {
         $this->languages = new ArrayCollection();
@@ -149,6 +155,18 @@ class Challenge
     public function setCatchPhrase(?string $catchPhrase): self
     {
         $this->catchPhrase = $catchPhrase;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

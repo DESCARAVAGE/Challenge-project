@@ -29,7 +29,7 @@
 	</div>
 	{% if app.user %}
 	<div class="d-flex justify-content-center p-1">
-		<a href="#" class="btn btn-secondary text-light ">
+		<a href="{{ path('challenge_show', {slug: challenge.slug}) }}" class="btn btn-secondary text-light ">
 			Voir le détail
 		</a>
 	</div>
