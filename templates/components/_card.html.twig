@@ -27,9 +27,17 @@
 			<p>{# {{ challenge.catchPhrase }} #}Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam labore id nostrum ipsa sit inventore dignissimos, pariatur culpa nobis harum velit at a laboriosam, voluptatibus odit eius temporibus libero consequatur.</p>
 		</div>
 	</div>
+	{% if app.user %}
 	<div class="d-flex justify-content-center p-1">
-		<a href="#" class="btn btn-secondary text-light ">
+		<a href="{{ path('challenge_show', {slug: challenge.slug}) }}" class="btn btn-secondary text-light ">
 			Voir le détail
 		</a>
 	</div>
+	{% else %}
+	<div class="d-flex justify-content-center p-1">
+		<a href=" {{ path('login') }}" class="btn btn-secondary text-light ">
+			Voir le détail
+		</a>
+	</div>
+	{% endif %}
 </div>

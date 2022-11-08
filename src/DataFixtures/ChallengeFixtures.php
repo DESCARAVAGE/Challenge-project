@@ -2,11 +2,12 @@
 
 namespace App\DataFixtures;
 
+use Faker\Factory;
+use App\Service\Slugify;
 use App\Entity\Challenge;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Faker\Factory;
-use Doctrine\Persistence\ObjectManager;
 
 class ChallengeFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -23,6 +24,12 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
         './build/images/challenge_image/info8.67e04780.jpeg',
     ];
 
+    private Slugify $slugify;
+    public function __construct(Slugify $slugify)
+    {
+        $this->slugify = $slugify;
+    }
+
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
@@ -35,11 +42,13 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
             $typeName = TypeFixtures::TYPES[array_rand(TypeFixtures::TYPES)];
             $challenge->setType($this->getReference('type_' . $typeName));
             $challenge->setDate($faker->dateTime());
+            $challenge->setDescription($faker->sentence(100));
             $levelName = array_rand(LevelFixtures::LEVELS);
             $challenge->setLevel($this->getReference('level_' . $levelName));
             $languageName = array_rand(LanguageFixtures::LANGUAGES);
             $challenge->addLanguage($this->getReference('languages_' . $languageName));
             $challenge->setCatchPhrase($faker->sentences(3, true));
+            $challenge->setSlug($this->slugify->generate($challenge->getName()));
             $manager->persist($challenge);
         }
         $manager->flush();
