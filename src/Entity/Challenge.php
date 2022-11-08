@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ChallengeRepository;
 use DateTime;
 use DateTimeInterface;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ChallengeRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ChallengeRepository::class)]
 class Challenge
@@ -57,6 +57,10 @@ class Challenge
         groups: ['add', 'default'],
     )]
     private string $catchPhrase;
+
+    #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
+    private string $description;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Assert\Length(
@@ -155,6 +159,18 @@ class Challenge
     public function setCatchPhrase(?string $catchPhrase): self
     {
         $this->catchPhrase = $catchPhrase;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

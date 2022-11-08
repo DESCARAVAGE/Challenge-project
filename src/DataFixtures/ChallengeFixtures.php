@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Challenge;
+use Faker\Factory;
 use App\Service\Slugify;
+use App\Entity\Challenge;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Faker\Factory;
-use Doctrine\Persistence\ObjectManager;
 
 class ChallengeFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -42,6 +42,7 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
             $typeName = TypeFixtures::TYPES[array_rand(TypeFixtures::TYPES)];
             $challenge->setType($this->getReference('type_' . $typeName));
             $challenge->setDate($faker->dateTime());
+            $challenge->setDescription($faker->sentence(100));
             $levelName = array_rand(LevelFixtures::LEVELS);
             $challenge->setLevel($this->getReference('level_' . $levelName));
             $languageName = array_rand(LanguageFixtures::LANGUAGES);
