@@ -12,10 +12,11 @@
 {% block body %}
 	<a class="ms-5 d-flex gap-3 text-decoration-none text-secondary" href="{{ path('home') }}">
 		<i class="bi bi-arrow-left fs-1"></i>
-		<div class="d-flex align-self-center">
+		<div class="align-self-center">
 			<p class="arrowT m-0 fs-5">Retour aux challenges</p>
 		</div>
 	</a>
+
 	<main class="mx-5">
 		<div class="mb-3">
 			<div class="d-flex justify-content-center align-items-center">
@@ -45,9 +46,10 @@
 				</small>
 				<p class="card-type ">{{ challenge.type.name }}</p>
 			</div>
-			<div class="d-flex">
+			<div class="m-2">
 				<h4 class="text-light me-2">Objectif du challenge :</h4>
-				<p class="text-light"> {{ challenge.description }}</p>
+				<p class="text-light">
+					{{ challenge.description }}</p>
 			</div>
 
 		</div>
@@ -55,7 +57,31 @@
 	<section class="m-5">
 		<div>
 			<h4 class="text-dark me-2">Espace commentaire :</h4>
+			<div class="comments">
+				{% for comment in challenge.comments %}
+					<div class="card m-3">
+						<div class="card-body">
+							{{ comment.message}}
+						</div>
+						<div class="text-secondary m-3">
+							{{ comment.author.username }}
+							-
+							{{ comment.createdAt|date('d/m/y') }}
+						</div>
+						{% if is_granted('ROLE_USER') and app.user == comment.author %}
+							{% include "comment/_delete_form.html.twig" %}
+						{% endif %}
+					</div>
+				{% endfor %}
+				{% if is_granted('ROLE_USER') %}
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					<button class="btn btn-primary">Publier</button>
+					{{ form_end(form) }}
+				{% endif %}
+			</div>
 		</div>
 	</section>
+
 
 {% endblock %}

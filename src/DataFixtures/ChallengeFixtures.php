@@ -50,6 +50,7 @@ class ChallengeFixtures extends Fixture implements DependentFixtureInterface
             $challenge->setCatchPhrase($faker->sentences(3, true));
             $challenge->setSlug($this->slugify->generate($challenge->getName()));
             $manager->persist($challenge);
+            $this->addReference('challenge_' . $i, $challenge);
         }
         $manager->flush();
     }

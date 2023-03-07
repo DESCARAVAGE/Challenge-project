@@ -10,16 +10,10 @@
 {% endblock %}
 
 {% block body %}
-	{% for type, messages in app.flashes(['success', 'danger', 'info']) %}
-		{% for message in messages %}	
-    	<div class="alert alert-{{type}} text-center mb-0">
-        	{{ message }}
-    	</div>
-		{% endfor %}
-	{% endfor %}
+
 	<section class="bloc">
 		{% if app.user %}
-			<h1 class="text-center text-light">Welcome
+			<h1 class="text-center text-light">Bon retour parmi nous 
 				{{ app.user.username }}
 				!</h1>
 			<div class="types">
@@ -33,7 +27,7 @@
 				<strong>{{ app.user.username }}</strong>
 				! Maintenant que tu es connecté tu peux avoir accès à
 				<strong>toutes les fonctionnalités</strong>
-				que proposer challenge yourself !!
+				que propose challenge yourself !!
 				<br>
 				Tu pourras retrouver les challenges que tu as acceptés sur
 				<strong>ton compte</strong>.
@@ -76,7 +70,7 @@
 				(PHP, JS, etc...),
 				<strong>Niveaux de difficultés</strong>
 				(basics, facile, etc...), et
-				<strong>Types</strong>
+				<strong>types</strong>
 				(front, back, full-stack).
 			</h6>
 			<div class="types">
