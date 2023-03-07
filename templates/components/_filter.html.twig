@@ -8,6 +8,8 @@
     <h4 class="text-center">Choisis ton language</h4>
     {{form_row(form.languages)}}
 
-    <button type='submit' class='btn btn-primary w-100'>Filtrer</button>
+    <button type='submit' class='btn btn-primary w-100 m-1'>Filtrer</button>
+    <a href="{{ path('home') }}" class='btn btn-light border w-100 m-1'>Réinitialiser la recherche</a>
+
 
 {{ form_end(form) }}

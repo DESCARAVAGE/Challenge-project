@@ -25,7 +25,9 @@
     </head>
     <body>
         {% block  header %}
-            {% if app.request.attributes.get('_route') != 'welcome' %}
+            {% if (app.request.attributes.get('_route') != 'welcome') and
+            (app.request.attributes.get('_route') != 'login') and
+            (app.request.attributes.get('_route') != 'register')%}
                 {% include 'components/_navbar.html.twig' %}
             {% endif %}
         {% endblock %}
