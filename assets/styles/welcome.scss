@@ -4,10 +4,7 @@
     height: 100vh;
     background-image: url(../images/fond-ecran.jpg);
     background-size: cover;
-    animation-name: back;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation: back 10s ease-in-out infinite;
 }
 
 @keyframes back {
@@ -29,18 +26,16 @@
     margin: 1rem;
     padding: 0.5rem;
     color: $light-primary;
-    border:2px solid $light-primary;
+    border: 2px solid $light-primary;
     border-radius: 50px;
     background: none;
-    cursor: pointer;
     transition: 0.4s;
 }
 
 .type:hover {
     color: $secondary;
     border: 2px solid $secondary;
-    filter:saturate(10);
-    
+    filter: saturate(10);
 }
 
 .color {
@@ -59,7 +54,7 @@
 
 .card:hover {
     mix-blend-mode: difference;
-    filter:saturate(3);
+    filter: saturate(3);
     transition: 0.5s;
 }
 

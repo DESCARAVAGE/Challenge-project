@@ -24,6 +24,14 @@
         {% endblock %}
     </head>
     <body>
+        {% block  header %}
+            {% if app.request.attributes.get('_route') != 'welcome' %}
+                {% include 'components/_navbar.html.twig' %}
+            {% endif %}
+        {% endblock %}
+        {% block flash %}
+            {% include 'components/_flash.html.twig' %}
+        {% endblock %}
         {% block body %}{% endblock %}
     </body>
 </html>

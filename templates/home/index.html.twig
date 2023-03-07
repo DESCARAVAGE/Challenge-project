@@ -6,16 +6,13 @@
 {% endblock %}
 
 {% block body %}
-	{% block header %}
-		{% include 'components/_navbar.html.twig' %}
-	{% endblock %}
-	{% block search %}{% endblock %}
+	
 	<main class="container-fluid js-filter d-flex flex-wrap justify-content-center">
 		<div class="row">
 			<div class="col-md-3 p-3 ">
 				{% include 'components/_filter.html.twig' %}
 			</div>
-			<div class="col-md-9 js-filter-content">
+			<div class="col-md-9 {# js-filter-conten t#}">
 				{% block cards %}
 					{% if challenges is not empty %}
 						{% for challenge in challenges %}

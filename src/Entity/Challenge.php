@@ -68,10 +68,14 @@ class Challenge
     )]
     private ?string $slug;
 
+    #[ORM\OneToMany(mappedBy: 'challenge', targetEntity: Comment::class)]
+    private Collection $comments;
+
     public function __construct()
     {
         $this->languages = new ArrayCollection();
         $this->date = new DateTime();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -195,6 +199,36 @@ class Challenge
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comment>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setChallenge($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getChallenge() === $this) {
+                $comment->setChallenge(null);
+            }
+        }
 
         return $this;
     }
